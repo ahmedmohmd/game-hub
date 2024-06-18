@@ -1,10 +1,22 @@
 import { useEffect, useState } from 'react';
 import apiClient from '../services/api-client';
 
-interface Game {
+export interface Platform {
+  platform: {
+    slug: string;
+  };
+}
+
+export interface ScreenShot {
+  image: string;
+}
+
+export interface Game {
   id: number;
   name: string;
-  // background_image: string;
+  background_image: string;
+  short_screenshots: ScreenShot[];
+  parent_platforms: Platform[];
 }
 
 interface FetchGamesResponse {
@@ -17,20 +29,25 @@ function useFetchGames() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const controller = new AbortController();
+    const doFetchGames = async () => {
+      const controller = new AbortController();
 
-    apiClient
-      .get<FetchGamesResponse>('/games', {
-        signal: controller.signal,
-      })
-      .then((res) => {
-        setGames(res.data.results);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+      try {
+        const { data } = await apiClient.get<FetchGamesResponse>('/games', {
+          signal: controller.signal,
+        });
+        setGames(data.results || []);
+        console.log(data.results || []);
 
-    return () => controller.abort();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error: any) {
+        setError(error.message);
+      }
+
+      return () => controller.abort();
+    };
+
+    doFetchGames();
   }, []);
 
   return { games, error };

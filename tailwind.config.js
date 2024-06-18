@@ -15,17 +15,19 @@ export default {
     themes: [
       {
         dark: {
-          ...themes['black'],
-          primary: '#fff',
+          ...themes['dark'],
+
+          'base-100': '#000',
+          primary: '#ff7a00',
         },
       },
       {
         light: {
           ...themes['light'],
-          // primary: '#f97316',
         },
       },
     ],
   },
+  darkMode: ['class', '[data-theme="dark"]'],
   plugins: [typoghraphy, daisyui],
 };

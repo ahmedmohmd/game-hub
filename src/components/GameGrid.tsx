@@ -1,4 +1,5 @@
-import useFetchGames from '../hooks/useFetchGames.tsx';
+import useFetchGames from '../hooks/useFetchGames';
+import GameCard from './GameCard';
 
 function GameGrid() {
   const { games, error } = useFetchGames();
@@ -25,9 +26,9 @@ function GameGrid() {
   }
 
   return (
-    <div>
+    <div className="grid gap-4 px-4 md:gap-6 lg:gap-8 lg:grid-cols-3 xl:grid-cols-4 grid-col-1 sm:grid-cols-2">
       {games.map((game) => {
-        return <div key={game.id}>{game.name}</div>;
+        return <GameCard key={game.id} game={game} />;
       })}
     </div>
   );
