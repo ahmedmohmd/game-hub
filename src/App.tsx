@@ -6,7 +6,7 @@ function App() {
     <div className="flex flex-col">
       <NavBar />
 
-      <div className="relative flex flex-row ">
+      <div className="relative flex flex-row">
         <div className="fixed left-0 hidden w-1/6 h-[calc(100vh-105px)] mx-2 mt-4 bg-gray-50 dark:bg-neutral-900 rounded-3xl aside lg:block">
           aside
         </div>

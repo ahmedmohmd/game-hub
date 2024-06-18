@@ -1,7 +1,6 @@
 import {
   AndroidLogo,
   AppleLogo,
-  // Desktop,
   GameController,
   GoogleChromeLogo,
   Icon,
@@ -14,7 +13,7 @@ interface Props {
   platforms: Platform[];
 }
 
-const platformsIcons: { [key: string]: any } = {
+const platformsIcons: { [key: string]: Icon } = {
   pc: SquaresFour,
   ios: AppleLogo,
   android: AndroidLogo,

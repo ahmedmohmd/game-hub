@@ -1,26 +1,55 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ScreenShot } from '../hooks/useFetchGames';
 
-const Carousel = ({ images }: { images: { image: string }[] }) => {
+interface Props {
+  screenshots: ScreenShot[];
+  interval: number;
+}
+
+const Carousel = ({ screenshots, interval = 3000 }: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
+  const carouselInterval = useRef<number | null>(null);
+
+  const nextImage = () => {
+    setCurrentIndex((prevIndex) => {
+      if (prevIndex === screenshots.length - 1 && direction === 'forward') {
+        setDirection('backward');
+        return prevIndex - 1;
+      } else if (prevIndex === 0 && direction === 'backward') {
+        setDirection('forward');
+        return prevIndex + 1;
+      } else {
+        return direction === 'forward' ? prevIndex + 1 : prevIndex - 1;
+      }
+    });
+  };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [images.length]);
+    carouselInterval.current = window.setInterval(nextImage, interval);
+    return () => {
+      if (carouselInterval.current) {
+        clearInterval(carouselInterval.current);
+      }
+    };
+  }, [interval]);
 
   return (
-    <div className="w-full carousel">
-      {images.map((image, index) => (
-        <div
-          key={Math.random()}
-          className={`w-full carousel-item ${index === currentIndex ? 'block' : 'hidden'}`}
-        >
-          <img src={image.image} className="w-full" alt="Tailwind CSS Carousel component" />
-        </div>
-      ))}
+    <div className="w-full h-full carousel">
+      <div
+        className="w-full h-full carousel__images"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {screenshots.map(({ image }: ScreenShot, index: number) => (
+          <div key={index} className="w-full h-full carousel__image-wrapper">
+            <img
+              src={image}
+              alt={`Slide ${index}`}
+              className="object-cover w-full h-full carousel__image"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

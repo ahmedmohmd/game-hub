@@ -17,6 +17,7 @@ export interface Game {
   background_image: string;
   short_screenshots: ScreenShot[];
   parent_platforms: Platform[];
+  rating: number;
 }
 
 interface FetchGamesResponse {

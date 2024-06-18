@@ -32,3 +32,44 @@
 .carousel-item.enter-bottom {
   transform: translateY(100%);
 } */
+
+/* Carousel.css */
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel__images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel__image-wrapper {
+  min-width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel__image {
+  width: 100%;
+  cursor: pointer;
+}
+
+.carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.carousel__arrow--left {
+  left: 10px;
+}
+
+.carousel__arrow--right {
+  right: 10px;
+}

@@ -1,10 +1,23 @@
-import useFetchGames from '../hooks/useFetchGames';
+import { Game } from '../hooks/useFetchGames';
+import { useGetGamesQuery } from '../services/games';
 import GameCard from './GameCard';
 
 function GameGrid() {
-  const { games, error } = useFetchGames();
+  const { isError, data: games, isLoading } = useGetGamesQuery({});
 
-  if (error) {
+  // if (isLoading) {
+  //   return (
+  //     <div className="flex flex-col gap-4 w-52">
+  //       <div className="w-full h-32 skeleton"></div>
+  //       <div className="h-4 skeleton w-28"></div>
+  //       <div className="w-full h-4 skeleton"></div>
+  //       <div className="w-full h-4 skeleton"></div>
+  //     </div>
+  //   );
+  // }
+  // console.log(games);
+
+  if (isError) {
     return (
       <div role="alert" className="alert alert-error">
         <svg
@@ -26,10 +39,23 @@ function GameGrid() {
   }
 
   return (
-    <div className="grid gap-4 px-4 md:gap-6 lg:gap-8 lg:grid-cols-3 xl:grid-cols-4 grid-col-1 sm:grid-cols-2">
-      {games.map((game) => {
-        return <GameCard key={game.id} game={game} />;
-      })}
+    <div className="grid gap-8 px-4 md:px-8 md:gap-6 md:grid-cols-2 2xl:grid-cols-4 xl:grid-cols-3 grid-col-1 sm:grid-cols-2">
+      {isLoading &&
+        [0, 0, 0, 0, 0, 0, 0].map(() => {
+          return (
+            <div className="flex flex-col gap-4 card xl:p-4">
+              <div className="w-full h-48 bg-base-300 dark:bg-neutral-800/75 skeleton"></div>
+              <div className="w-1/3 h-4 bg-base-300 dark:bg-neutral-800/75 skeleton"></div>
+              <div className="w-full h-4 bg-base-300 dark:bg-neutral-800/75 skeleton"></div>
+              <div className="w-full h-4 bg-base-300 dark:bg-neutral-800/75 skeleton"></div>
+            </div>
+          );
+        })}
+
+      {games &&
+        games.results.map((game: Game) => {
+          return <GameCard key={game.id} game={game} />;
+        })}
     </div>
   );
 }
