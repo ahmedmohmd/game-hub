@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ScreenShot } from '../hooks/useFetchGames';
 
 interface Props {
@@ -11,7 +11,7 @@ const Carousel = ({ screenshots, interval = 3000 }: Props) => {
   const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
   const carouselInterval = useRef<number | null>(null);
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     setCurrentIndex((prevIndex) => {
       if (prevIndex === screenshots.length - 1 && direction === 'forward') {
         setDirection('backward');
@@ -23,7 +23,7 @@ const Carousel = ({ screenshots, interval = 3000 }: Props) => {
         return direction === 'forward' ? prevIndex + 1 : prevIndex - 1;
       }
     });
-  };
+  }, [direction, screenshots.length]);
 
   useEffect(() => {
     carouselInterval.current = window.setInterval(nextImage, interval);
@@ -32,10 +32,10 @@ const Carousel = ({ screenshots, interval = 3000 }: Props) => {
         clearInterval(carouselInterval.current);
       }
     };
-  }, [interval]);
+  }, [interval, nextImage]);
 
   return (
-    <div className="w-full h-full carousel">
+    <div className="w-full h-full transition-all duration-[5s] ease-in carousel group-hover:scale-150">
       <div
         className="w-full h-full carousel__images"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}

@@ -1,29 +1,6 @@
 import { useEffect, useState } from 'react';
 import apiClient from '../services/api-client';
-
-export interface Platform {
-  platform: {
-    slug: string;
-  };
-}
-
-export interface ScreenShot {
-  image: string;
-}
-
-export interface Game {
-  id: number;
-  name: string;
-  background_image: string;
-  short_screenshots: ScreenShot[];
-  parent_platforms: Platform[];
-  rating: number;
-}
-
-interface FetchGamesResponse {
-  count: number;
-  results: Game[];
-}
+import { FetchGamesResponse, Game } from '../types/games.types';
 
 function useFetchGames() {
   const [games, setGames] = useState<Game[]>([]);
@@ -38,7 +15,6 @@ function useFetchGames() {
           signal: controller.signal,
         });
         setGames(data.results || []);
-        console.log(data.results || []);
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {

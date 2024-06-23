@@ -1,6 +1,7 @@
 import typoghraphy from '@tailwindcss/typography';
 import daisyui from 'daisyui';
 import themes from 'daisyui/src/theming/themes.js';
+// import { customeScrollBar } from './src/plugins/scrollbar';
 
 /** @type {import('tailwindcss').Config} */
 
@@ -24,8 +25,10 @@ export default {
       {
         light: {
           ...themes['light'],
+          primary: '#ff7a00',
         },
       },
+      'black',
     ],
   },
   darkMode: ['class', '[data-theme="dark"]'],
