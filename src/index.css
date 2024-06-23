@@ -3,6 +3,85 @@
 @tailwind utilities;
 
 /* Scrollbar */
+
+/* Custom scrollbar for WebKit browsers */
+
+/* Firefox */
+:root {
+  --scrollbar-thumb-bg: #4a4a4a;
+  --scrollbar-thumb-bg-light: #797979;
+  /* --scrollbar-thumb-bg: #ff8002; */
+  --scrollbar-track-bg: #1c1c1c;
+  --scrollbar-track-bg-light: #e1e1e1;
+  --scrollbar-width: 8px;
+}
+
+*[data-theme='dark'] {
+  scrollbar-width: thin; /* Makes the scrollbar thin */
+  scrollbar-color: var(--scrollbar-thumb-bg) var(--scrollbar-track-bg);
+}
+*[data-theme='dark'] * {
+  scrollbar-width: thin; /* Makes the scrollbar thin */
+  scrollbar-color: var(--scrollbar-thumb-bg) var(--scrollbar-track-bg);
+}
+
+*[data-theme='dark'] ::-webkit-scrollbar {
+  width: var(--scrollbar-width); /* Thin scrollbar width */
+}
+
+*[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-bg); /* Dark gray background */
+  border-radius: 10px; /* Rounded corners for track */
+}
+
+*[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg); /* Orange movable track */
+  border-radius: 10px; /* Rounded corners for thumb */
+}
+/* Light Theme */
+*[data-theme='light'] {
+  scrollbar-width: thin; /* Makes the scrollbar thin */
+  scrollbar-color: var(--scrollbar-thumb-bg-light) var(--scrollbar-track-bg-light);
+}
+*[data-theme='light'] * {
+  scrollbar-width: thin; /* Makes the scrollbar thin */
+  scrollbar-color: var(--scrollbar-thumb-bg-light) var(--scrollbar-track-bg-light);
+}
+
+*[data-theme='light'] ::-webkit-scrollbar {
+  width: var(--scrollbar-width); /* Thin scrollbar width */
+}
+
+*[data-theme='light'] ::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-bg-light); /* light gray background */
+  border-radius: 10px; /* Rounded corners for track */
+}
+
+*[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg-light); /* Orange movable track */
+  border-radius: 10px; /* Rounded corners for thumb */
+}
+
+/* WebKit Browsers */
+/* ::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
+
+/* Firefox */
+
 /* Global styles or specific component CSS */
 
 /* .carousel-item {

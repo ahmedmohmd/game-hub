@@ -10,19 +10,18 @@ interface Platform {
 
 const PlatformSelector = () => {
   const { handlePlatform } = useContext(AppContext);
-  const { isError, isFetching, isLoading, data: platforms } = useGetPlatformsQuery({});
+  const { isError, data: platforms } = useGetPlatformsQuery({});
 
   if (isError) return null;
 
   return (
     <select
-      disabled={isFetching || isLoading}
       className="w-full max-w-xs mb-8 bg-gray-100 dark:bg-neutral-900 select"
       onChange={(event) => handlePlatform(+event.target.value)}
     >
-      {/* <option disabled selected>
-        Pick your favorite Simpson
-      </option> */}
+      <option disabled selected>
+        Select Your Platform
+      </option>
 
       {platforms?.results.map((platform: Platform) => {
         return (

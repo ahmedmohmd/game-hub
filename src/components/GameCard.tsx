@@ -20,30 +20,33 @@ function GameCard({ game }: Props) {
       </figure>
       <div className="absolute z-10 w-full p-6 overflow-hidden transition-all duration-300 card-body -bottom-36 group-hover:bottom-0">
         <h2 className="text-2xl font-bold card-title">{game.name}</h2>
-        {/* <p>this is a hort description about image.</p> */}
         <div className="transition-all duration-300 opacity-0 group-hover:opacity-100">
           <PlatformsIcons platforms={game.parent_platforms} />
         </div>
-        <div className="relative flex items-center justify-start gap-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
-          <div className="py-3 font-medium rounded-md badge badge-ghost">rating</div>
-          <div className="flex gap-0.5 rating rating-sm cursor-default">
-            {Array(Math.round(game.rating))
-              .fill(0)
-              .map(() => {
-                return (
-                  <input
-                    key={Math.random()}
-                    type="text"
-                    className="bg-orange-400 cursor-default mask mask-star-2"
-                  />
-                );
-              })}
+        {game.rating && Math.round(game.rating) > 0 && (
+          <div className="relative flex items-center justify-start gap-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
+            <div className="py-3 font-medium rounded-md badge badge-ghost">rating</div>
+            <div className="flex gap-0.5 rating rating-sm cursor-default">
+              {Array(Math.round(game.rating))
+                .fill(0)
+                .map(() => {
+                  return (
+                    <input
+                      key={Math.random()}
+                      type="text"
+                      className="bg-orange-400 cursor-default mask mask-star-2"
+                    />
+                  );
+                })}
+            </div>
           </div>
-        </div>
-        <div className="relative flex items-center justify-start gap-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
-          <div className="py-3 font-medium rounded-md badge badge-ghost">release date</div>
-          <div className="text-slate-400">{game.released.split('-').reverse().join('/')}</div>
-        </div>
+        )}
+        {game.released && (
+          <div className="relative flex items-center justify-start gap-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
+            <div className="py-3 font-medium rounded-md badge badge-ghost">release date</div>
+            <div className="text-slate-400">{game.released?.split('-').reverse().join('/')}</div>
+          </div>
+        )}
         {game.metacritic && (
           <div className="relative flex items-center justify-start gap-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
             <div className="py-3 font-medium rounded-md badge badge-ghost">score</div>

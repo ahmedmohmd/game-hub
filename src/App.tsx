@@ -2,6 +2,7 @@ import { createContext, useState } from 'react';
 import GameGrid from './components/GameGrid.tsx';
 import GenresList from './components/GenresList.tsx';
 import NavBar from './components/NavBar.tsx';
+import OrderingSelector from './components/OrderingSelector.tsx';
 import PlatformSelector from './components/PlatformSelector.tsx';
 
 interface AppContextType {
@@ -10,6 +11,8 @@ interface AppContextType {
   activeGenre: string;
   handlePlatform: (platform: number) => void;
   platform: number;
+  handleOrdering: (orderBy: string) => void;
+  orderBy: string;
 }
 
 export const AppContext = createContext<AppContextType>({
@@ -18,11 +21,14 @@ export const AppContext = createContext<AppContextType>({
   activeGenre: '',
   handlePlatform: () => {},
   platform: 0,
+  handleOrdering: () => {},
+  orderBy: '',
 });
 
 function App() {
   const [genreSlug, setGenreSlug] = useState<string>('');
   const [platform, setPlatform] = useState<number>(0);
+  const [orderBy, setOrderBy] = useState<string>('');
 
   const handeGenreSlug = (slug: string) => {
     setGenreSlug(slug);
@@ -32,11 +38,23 @@ function App() {
     setPlatform(platform);
   };
 
+  const handleOrdering = (orderBy: string) => {
+    setOrderBy(orderBy);
+  };
+
   return (
     <AppContext.Provider
-      value={{ genreSlug, handeGenreSlug, activeGenre: genreSlug, handlePlatform, platform }}
+      value={{
+        genreSlug,
+        handeGenreSlug,
+        activeGenre: genreSlug,
+        handlePlatform,
+        platform,
+        orderBy,
+        handleOrdering,
+      }}
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col scroll-bar-dark">
         <NavBar />
 
         <div className="relative flex flex-row">
@@ -48,7 +66,10 @@ function App() {
             <GenresList />
           </div>
           <div className="px-4 md:px-8 flex-1 xl:ml-[16.66666666666667%] mt-4">
-            <PlatformSelector />
+            <div className="flex justify-start w-full gap-4">
+              <PlatformSelector />
+              <OrderingSelector />
+            </div>
             <GameGrid />
           </div>
         </div>

@@ -6,13 +6,18 @@ import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 
 function GameGrid() {
-  const { genreSlug, platform } = useContext(AppContext);
-  const { isError, data: games, isLoading, isFetching } = useGetGamesQuery({ genreSlug, platform });
+  const { genreSlug, platform, orderBy } = useContext(AppContext);
+  const {
+    isError,
+    data: games,
+    isLoading,
+    isFetching,
+  } = useGetGamesQuery({ genreSlug, platform, orderBy });
 
   const gameCardSkeletonsCount = Array(7).fill(0);
 
   return (
-    <div className="grid gap-8 md:gap-6 md:grid-cols-2 2xl:grid-cols-4 xl:grid-cols-3 grid-col-1 sm:grid-cols-2">
+    <div className="grid gap-8 md:gap-6 md:grid-cols-2 2xl:grid-cols-4 xl:grid-cols-3 grid-col-1 sm:grid-cols-2 ">
       {(isLoading || isFetching) &&
         gameCardSkeletonsCount.map(() => {
           return <GameCardSkeleton key={Math.random()} />;
