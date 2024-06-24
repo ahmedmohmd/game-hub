@@ -9,15 +9,15 @@ const CriticScore = ({ score }: Props) => {
 
   useEffect(() => {
     if (score > 75) {
-      setBadgeColor('badge-success');
+      setBadgeColor('text-success');
     } else if (score >= 50) {
-      setBadgeColor('badge-warning');
+      setBadgeColor('text-warning');
     } else {
-      setBadgeColor('badge-error');
+      setBadgeColor('text-error');
     }
   }, [score]);
 
-  return <div className={`badge py-3 font-medium ${badgeColor}`}>{score}</div> ;
+  return <div className={`font-medium ${badgeColor}`}>{score}</div>;
 };
 
 export default CriticScore;

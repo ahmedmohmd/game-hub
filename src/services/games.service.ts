@@ -9,10 +9,16 @@ export const gamesApi = createApi({
   }),
   endpoints: (builder) => ({
     getGames: builder.query({
-      query: ({ genreSlug, platform, orderBy }) => {
+      query: ({ genreSlug, platform, orderBy, searchText }) => {
         const returenedObject: {
           url: string;
-          params: { key: string; genres?: string; platforms?: number; ordering?: string };
+          params: {
+            key: string;
+            genres?: string;
+            platforms?: number;
+            ordering?: string;
+            search?: string;
+          };
         } = {
           url: 'games',
           params: { key: import.meta.env.VITE_RAWG_API_KEY },
@@ -28,6 +34,10 @@ export const gamesApi = createApi({
 
         if (orderBy) {
           returenedObject.params.ordering = '-' + orderBy;
+        }
+
+        if (searchText) {
+          returenedObject.params.search = searchText;
         }
 
         return returenedObject;

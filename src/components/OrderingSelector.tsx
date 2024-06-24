@@ -6,12 +6,14 @@ const OrderingSelector = () => {
 
   return (
     <select
-      className="w-full max-w-xs mb-8 bg-gray-100 dark:bg-neutral-900 select"
+      className="hidden border-none !outline-none bg-gray-100 md:block dark:bg-neutral-900 select"
       onChange={(event) => handleOrdering(event.target.value)}
     >
       <option disabled selected>
         Order By
       </option>
+
+      <option value="">All</option>
 
       <option value="name">Name</option>
       <option value="released">Released</option>

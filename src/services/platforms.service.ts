@@ -9,7 +9,7 @@ export const platformsApi = createApi({
   endpoints: (builder) => ({
     getPlatforms: builder.query({
       query: () => ({
-        url: 'platforms',
+        url: 'platforms/lists/parents',
         params: { key: import.meta.env.VITE_RAWG_API_KEY },
       }),
     }),

@@ -12,7 +12,7 @@ const GenresList = () => {
   const genreCardSkeletonsCount = Array(5).fill(0);
 
   return (
-    <div className="flex flex-col justify-start w-full gap-2">
+    <div className="flex flex-col justify-start w-full gap-2 mb-6">
       {(isLoading || isFetching) &&
         genreCardSkeletonsCount.map(() => <GenreCardSkeleton key={Math.random()} />)}
 

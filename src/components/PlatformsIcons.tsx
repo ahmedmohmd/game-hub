@@ -26,7 +26,7 @@ const platformsIcons: { [key: string]: Icon } = {
 
 function PlatformsIcons({ platforms }: Props) {
   return (
-    <div className="flex justify-start gap-1">
+    <div className="flex justify-start gap-2">
       {platforms.map(({ platform }: Platform) => {
         const PlatformIcon = platformsIcons[platform.slug];
 
@@ -34,11 +34,11 @@ function PlatformsIcons({ platforms }: Props) {
           return (
             <div
               key={platform.slug}
-              className="p-1 rounded-md transition-all duration-100  dark:hover:text-white tooltip bg-neutral-200 hover:text-slate-900 dark:bg-[#191e24] text-gray-500 dark:text-slate-300"
+              className="rounded-md transition-all duration-100  dark:hover:text-white tooltip bg-transparent hover:text-slate-900 dark:bg-[#191e24] text-neutral-500  dark:text-neutral-300/90"
               data-theme="black"
               data-tip={platform.slug}
             >
-              <PlatformIcon size={24} weight="fill" />
+              <PlatformIcon size={26} weight="fill" />
             </div>
           );
         }

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ScreenShot } from '../hooks/useFetchGames';
+import { ScreenShot } from '../types/games.types';
 
 interface Props {
   screenshots: ScreenShot[];

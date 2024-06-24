@@ -1,11 +1,12 @@
 import darkLogo from '../assets/logo-dark.svg';
 import lightLogo from '../assets/logo-light.svg';
+import Input from './Input';
 import ThemeToggler from './ThemeToggler';
 
 function NavBar() {
   return (
     <div className="sticky top-0 z-20 bg-base-100/80 md:py-4 navbar backdrop-blur-xl">
-      <div className="w-full px-4 ">
+      <div className="flex justify-between w-full px-4">
         <div className="flex items-center flex-1 gap-6">
           <a className="hidden duration-300 dark:inline-block hover:scale-110" href="#address">
             <img src={lightLogo} className="w-16 h-16" alt="Logo" />
@@ -18,6 +19,7 @@ function NavBar() {
             game hub
           </span>
         </div>
+
         <ThemeToggler />
       </div>
     </div>

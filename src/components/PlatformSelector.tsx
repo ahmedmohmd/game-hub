@@ -16,12 +16,14 @@ const PlatformSelector = () => {
 
   return (
     <select
-      className="w-full max-w-xs mb-8 bg-gray-100 dark:bg-neutral-900 select"
+      className="hidden bg-gray-100 border-none !outline-none md:block dark:bg-neutral-900 select"
       onChange={(event) => handlePlatform(+event.target.value)}
     >
       <option disabled selected>
         Select Your Platform
       </option>
+
+      <option value="">All</option>
 
       {platforms?.results.map((platform: Platform) => {
         return (

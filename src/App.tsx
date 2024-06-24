@@ -1,6 +1,8 @@
 import { createContext, useState } from 'react';
+import DynamicHeader from './components/DynamicHeader.tsx';
 import GameGrid from './components/GameGrid.tsx';
 import GenresList from './components/GenresList.tsx';
+import Input from './components/Input.tsx';
 import NavBar from './components/NavBar.tsx';
 import OrderingSelector from './components/OrderingSelector.tsx';
 import PlatformSelector from './components/PlatformSelector.tsx';
@@ -13,6 +15,8 @@ interface AppContextType {
   platform: number;
   handleOrdering: (orderBy: string) => void;
   orderBy: string;
+  searchText: string;
+  handleSearch: (searchText: string) => void;
 }
 
 export const AppContext = createContext<AppContextType>({
@@ -23,12 +27,15 @@ export const AppContext = createContext<AppContextType>({
   platform: 0,
   handleOrdering: () => {},
   orderBy: '',
+  searchText: '',
+  handleSearch: () => {},
 });
 
 function App() {
   const [genreSlug, setGenreSlug] = useState<string>('');
   const [platform, setPlatform] = useState<number>(0);
   const [orderBy, setOrderBy] = useState<string>('');
+  const [searchText, setSearchText] = useState<string>('');
 
   const handeGenreSlug = (slug: string) => {
     setGenreSlug(slug);
@@ -42,6 +49,12 @@ function App() {
     setOrderBy(orderBy);
   };
 
+  const handleSearch = (searchText: string) => {
+    console.log('handleSearch', searchText);
+
+    setSearchText(searchText);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -52,9 +65,11 @@ function App() {
         platform,
         orderBy,
         handleOrdering,
+        searchText,
+        handleSearch,
       }}
     >
-      <div className="flex flex-col scroll-bar-dark">
+      <div className="flex flex-col text-black dark:text-white scroll-bar-dark">
         <NavBar />
 
         <div className="relative flex flex-row">
@@ -63,10 +78,16 @@ function App() {
             <div className="sticky top-0 p-2 pb-6 bg-white dark:bg-black">
               <h1 className="text-2xl font-semibold text-black dark:text-white">Genres</h1>
             </div>
+
             <GenresList />
           </div>
-          <div className="px-4 md:px-8 flex-1 xl:ml-[16.66666666666667%] mt-4">
-            <div className="flex justify-start w-full gap-4">
+          <div className="px-4 md:px-8 flex-1 xl:ml-[16.66666666666667%] mb-6">
+            <DynamicHeader genre={genreSlug} platform={platform} />
+
+            <div className="flex justify-start w-full gap-4 mb-12 ">
+              <div className="flex-1">
+                <Input />
+              </div>
               <PlatformSelector />
               <OrderingSelector />
             </div>
