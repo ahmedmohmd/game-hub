@@ -1,15 +1,8 @@
 import { useState } from 'react';
-import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { AppContext } from './common/context/app-context.ts';
-import DynamicHeader from './components/DynamicHeader.tsx';
-import Input from './components/Input.tsx';
 import NavBar from './components/NavBar/NavBar.tsx';
-import OrderInput from './components/OrderINput.tsx';
-import OrderingSelector from './components/OrderingSelector.tsx';
-import PlatformSelector from './components/PlatformSelector.tsx';
-import GameGrid from './features/games/components/GameGrid.tsx';
-import GenresList from './features/genres/components/GenresList.tsx';
 import GamePage from './pages/Game.tsx';
 import HomePage from './pages/Home.tsx';
 

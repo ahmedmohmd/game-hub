@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useGetGameQuery } from '../features/games/services/games.service';
 import { useParams } from 'react-router';
-import GameRelease from '../features/games/components/GameRelease';
-import GameScore from '../features/games/components/GameScore';
-import GameRating from '../features/games/components/GameRating';
-import PlatformsIcons from '../components/PlatformsIcons';
 import CriticScore from '../features/games/components/CriticScore';
 
-interface IGameResponse {
-  id: number;
-  background_image: string;
-}
+// interface IGameResponse {
+//   id: number;
+//   background_image: string;
+// }
 
 const GamePage = () => {
   const { id } = useParams();
@@ -45,7 +41,7 @@ const GamePage = () => {
         <article className="relative top-0 overflow-hidden h-80 w-80 rounded-lg hidden md:block">
           <figure className="w-full h-full">
             <img
-              className="object-cover object-left-top w-full h-full"
+              className="object-cover object-left-top w-full h-full bg-center"
               src={game?.background_image}
               alt={game?.name}
             />
