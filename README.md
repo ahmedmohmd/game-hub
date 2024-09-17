@@ -10,6 +10,42 @@ Game Hub is a frontend application built with React and Redux for state manageme
 2. Awesome Design thanks to **tailwind** and **daisyui**.
 3. Nice perfomance
 4. Solid state managment thanks to **redux** and **redux-toolkit**.
+5. Dual Themes: **Dark** & **Light** Theme
+6. Clean and well wrettin Code Thanks to **ESlint** and **Prettier**.
+
+## 🛠️ Tech Stack
+
+- React.js
+- **Redux** as a _state manager_
+- TailwindCSS
+- **daisyui** as a _tailwind ui_.
+
+## 🔧 Install Instructions
+
+1. Clone the repo
+
+```bash
+    git clone https://github.com/ahmedmohmd/inventory-app
+
+```
+
+2. Install dependencies
+
+```bash
+  yarn install
+```
+
+3. Run the App
+
+```bash
+  yarn run dev
+
+```
+
+## 🖥️ Usage
+
+1. You can search about games with: `search bar`, `categouries` and `platforms`.
+2. You can openany game in its single page to show more details about the game.
 
 ## 🖼️ Application's Screeshots
 
