@@ -23,7 +23,15 @@ const platformMap: Record<number, string> = {
 const DynamicHeader = ({ genre, platform }: Props) => {
   const headerText = `${!genre && !platform ? 'All' : ''} ${genre.substring(0, 1).toUpperCase() + genre.substring(1) || ''} ${platformMap[platform] || ''} Games`;
 
-  return <h2 className="mb-8 text-4xl font-bold">{headerText}</h2>;
+  return (
+    <div className="mb-8 ">
+      <h2 className="mb-2 text-4xl font-bold">{headerText}</h2>
+      <p className="hidden mt-1 text-lg md:block text-neutral-500 dark:text-neutral-300">
+        Explore wide range of different{' '}
+        {genre.substring(0, 1).toUpperCase() + genre.substring(1) || ''} Games.
+      </p>
+    </div>
+  );
 };
 
 export default DynamicHeader;

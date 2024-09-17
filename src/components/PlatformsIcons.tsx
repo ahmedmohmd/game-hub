@@ -7,7 +7,7 @@ import {
   LinuxLogo,
   SquaresFour,
 } from '@phosphor-icons/react';
-import { Platform } from '../types/games.types';
+import { Platform } from '../features/games/types/games.types';
 
 interface Props {
   platforms: Platform[];
@@ -27,7 +27,7 @@ const platformsIcons: { [key: string]: Icon } = {
 function PlatformsIcons({ platforms }: Props) {
   return (
     <div className="flex justify-start gap-2">
-      {platforms.map(({ platform }: Platform) => {
+      {platforms?.map(({ platform }: Platform) => {
         const PlatformIcon = platformsIcons[platform.slug];
 
         if (PlatformIcon) {

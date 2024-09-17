@@ -1,17 +1,16 @@
 import { useContext } from 'react';
-import { AppContext } from '../App';
+import { AppContext } from '../common/context/app-context';
 
 const OrderingSelector = () => {
   const { handleOrdering } = useContext(AppContext);
 
   return (
     <select
-      className="hidden border-none !outline-none bg-gray-100 md:block dark:bg-neutral-900 select"
+      className="hidden border-none hover:bg-gray-200 dark:hover:bg-neutral-950 !outline-none bg-gray-100 md:block dark:bg-neutral-900 select transition-all duration-150 active:scale-[0.97]"
       onChange={(event) => handleOrdering(event.target.value)}
+      defaultValue="Order By"
     >
-      <option disabled selected>
-        Order By
-      </option>
+      <option disabled>Order By</option>
 
       <option value="">All</option>
 

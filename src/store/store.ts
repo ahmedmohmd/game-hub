@@ -1,9 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { gamesApi } from '../services/games.service';
-
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { genresApi } from '../services/genres.service';
-import { platformsApi } from '../services/platforms.service';
+import { gamesApi } from '../features/games/services/games.service';
+import { genresApi } from '../features/genres/services/genres.service';
+import { platformsApi } from '../features/header/services/platforms.service';
 
 export const store = configureStore({
   reducer: {

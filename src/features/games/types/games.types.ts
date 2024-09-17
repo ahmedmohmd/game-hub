@@ -17,6 +17,7 @@ export interface Game {
   rating: number;
   released: string;
   metacritic: number;
+  description_raw?: string;
 }
 
 export interface FetchGamesResponse {

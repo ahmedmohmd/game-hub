@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AppContext } from '../App';
+import { AppContext } from '../../../common/context/app-context';
 import { useGetGenresQuery } from '../services/genres.service';
 import { Genre } from '../types/genres.types';
 import GenreCard from './GenreCard';

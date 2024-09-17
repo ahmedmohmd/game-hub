@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useContext, useState } from 'react';
-import { AppContext } from '../App';
+import { AppContext } from '../common/context/app-context';
 
 const Input = () => {
   const { handleSearch } = useContext(AppContext);
@@ -18,7 +18,7 @@ const Input = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label className="flex items-center gap-2 border-none rounded-2xl !outline-none input  input-bordered bg-neutral-100 dark:bg-neutral-900">
+      <label className="flex h-12 items-center gap-2 border-none rounded-3xl !outline-none input  input-bordered bg-neutral-100 dark:bg-neutral-900">
         <input
           type="text"
           onChange={handleChange}
