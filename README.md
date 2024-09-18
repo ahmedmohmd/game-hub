@@ -71,4 +71,4 @@ Game Hub is a frontend application built with React and Redux for state manageme
   <img class="display: inline-block;" src="./src/assets/app-screenshots/home-page-light.png"  />
   <img class="display: inline-block;" src="./src/assets/app-screenshots/game-page-dark.png"  />
   <img class="display: inline-block;" src="./src/assets/app-screenshots/game-page-light.png"  />
-<div>
+</div>
