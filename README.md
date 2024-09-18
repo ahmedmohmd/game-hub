@@ -60,7 +60,7 @@ Game Hub is a frontend application built with React and Redux for state manageme
 
 [Game Gub](https://ahmedmohmd.vercel.app/projects/game-hub)
 
-## Demo
+## 👀 Demo
 
 [Game Gub](https://g3mehub.vercel.app/)
 
