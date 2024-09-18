@@ -18,7 +18,8 @@ Game Hub is a frontend application built with React and Redux for state manageme
 - React.js
 - **Redux** as a _state manager_
 - TailwindCSS
-- **daisyui** as a _tailwind ui_.
+- **daisyui** as a _tailwind ui_
+- **react-router**
 
 ## 🔧 Install Instructions
 
@@ -29,13 +30,19 @@ Game Hub is a frontend application built with React and Redux for state manageme
 
 ```
 
-2. Install dependencies
+2. Add nessecary Environemtent Variables
+
+- create file and name it: `.env.local`.
+- create register on `RAWG` website and get `your API KEY`.
+- add the following env variable: `VITE_RAWG_API_KEY`.
+
+3. Install dependencies
 
 ```bash
   yarn install
 ```
 
-3. Run the App
+4. Run the App
 
 ```bash
   yarn run dev
@@ -45,7 +52,17 @@ Game Hub is a frontend application built with React and Redux for state manageme
 ## 🖥️ Usage
 
 1. You can search about games with: `search bar`, `categouries` and `platforms`.
-2. You can openany game in its single page to show more details about the game.
+2. You can open any game in its single page to show more details about the game.
+3. You can find Games by Game Category direct from sidebar.
+4. You can switch between two themese: **Dark** and **Light** Theme.
+
+## 🏠 Offecial Project's Home Page
+
+[Game Gub](https://ahmedmohmd.vercel.app/projects/game-hub)
+
+## Demo
+
+[Game Gub](https://g3mehub.vercel.app/)
 
 ## 🖼️ Application's Screeshots
 
